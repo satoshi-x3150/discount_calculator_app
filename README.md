@@ -1,24 +1,48 @@
-# README
+# 割引計算アプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
 
-Things you may want to cover:
+このアプリは、買い物中に割引後の価格をすぐに知りたい人向けの、シンプルな割引計算アプリです。「〇割引」や「〇％引き」の両方に対応し、税込・税抜の切り替えも可能です。
 
-* Ruby version
+## 機能一覧
 
-* System dependencies
+- **割引方法の選択**：「〇割引」または「〇％引き」を選択
+- **割引率の選択方法**：
+  - 10%～60%の10%刻みのボタンで選択
+  - または、手入力で直接割引率を入力
+- **価格入力**：商品価格を入力
+- **割引後の価格計算・表示**：割引適用後の価格を即座に表示
+- **税込・税抜の切り替え**：8%（軽減税率）と10%の税込価格を同時に表示
+- **リセットボタン**：入力内容をリセット
+- **合計金額の表示**：購入リストに追加し、合計金額を右側に表示
+- **購入リスト管理**：リストに追加・削除が可能
+- **エンタメ要素**：割引率のボタンを押すとランダムで「ラッキー」や「スーパーラッキー」などのメッセージが一瞬表示される
 
-* Configuration
+## 開発環境
 
-* Database creation
+- **フレームワーク**：Ruby on Rails
+- **データベース**：PostgreSQL
+- **フロントエンド**：HTML, CSS, JavaScript（jQuery）
+- **デザイン**：Bootstrap（基本レイアウト）＋ Tailwind CSS（カスタマイズ用）
 
-* Database initialization
+## 使用方法
 
-* How to run the test suite
+1. 割引方法（〇割 or 〇％）を選択
+2. 割引率をボタンまたは手入力で選択
+3. 商品の価格を入力
+4. 割引後の価格が表示される
+5. 必要なら合計に追加し、リストを管理
+6. 税込み・税抜きを確認
+7. 必要ならリセットボタンでクリア
 
-* Services (job queues, cache servers, search engines, etc.)
+## 今後の追加予定
 
-* Deployment instructions
+- **割引率ボタンのアニメーション改善**
+- **より直感的なデザインの調整**
+- **スマホ版の最適化**
+- **履歴機能の追加（オプション）**
 
-* ...
+## ライセンス
+
+MIT License
+
