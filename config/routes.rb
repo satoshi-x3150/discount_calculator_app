@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'discounts/index'
+  root to: 'discounts#index'
 end

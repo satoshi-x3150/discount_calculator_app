@@ -1,0 +1,25 @@
+/* 初期状態では非表示にする */
+.hidden {
+  display: none;
+}
+
+/* ボタンのデザイン */
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ボタンのホバー時のスタイル */
+button:hover {
+  background-color: #f0f0f0;
+}
+
+/* 入力欄のデザイン */
+input {
+  margin: 5px;
+  padding: 8px;
+  font-size: 14px;
+  width: 80px;
+}

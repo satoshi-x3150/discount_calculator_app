@@ -1,2 +1,36 @@
-<h1>Discounts#index</h1>
-<p>Find me in app/views/discounts/index.html.erb</p>
+<h1>割引計算アプリ</h1>
+<p>割引の表示を選んでください</p>
+
+<!-- 割引方法の選択ボタン -->
+<button id="percent-btn"> 〇％引き </button>
+<button id="fraction-btn"> 〇割引 </button>
+
+<!-- 割引率の選択エリア（初期状態は非表示） -->
+<div id="discount-percent" class="hidden">
+  <p>割引率を選んでください（〇％引き）</p>
+  <button>10%</button>
+  <button>20%</button>
+  <button>30%</button>
+  <button>40%</button>
+  <button>50%</button>
+  <button>60%</button>
+  <p>または手入力</p>
+  <input type="number" id="percent-input" placeholder="例: 25">
+</div>
+
+<div id="discount-fraction" class="hidden">
+  <p>割引率を選んでください（〇割引）</p>
+  <button>1割</button>
+  <button>2割</button>
+  <button>3割</button>
+  <button>4割</button>
+  <button>5割</button>
+  <button>6割</button>
+  <p>または手入力</p>
+  <input type="number" id="fraction-input" placeholder="例: 2">
+</div>
+
+<!-- CSSとJavaScriptを読み込む -->
+<%= stylesheet_link_tag 'discounts', media: 'all' %>
+<%= javascript_include_tag 'discounts', defer: true %>
+
