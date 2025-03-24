@@ -11,68 +11,85 @@ window.addEventListener('turbo:load', () => {
   const priceSection = document.getElementById("price-section");
   const resultSection = document.getElementById("result-section");
 
-    // 初期状態は全部非表示にしておく
-    percentDiv.style.display = "none";
-    fractionDiv.style.display = "none";
-    priceSection.style.display = "none";
-    resultSection.style.display = "none";
+  const priceInput = document.getElementById("price-input");
+  const percentInput = document.getElementById("percent-input");
+  const fractionInput = document.getElementById("fraction-input");
+  const result = document.getElementById("discounted-price");
 
-    // 「％引き」ボタンを押したとき
+  // 初期状態は全部非表示にしておく
+  percentDiv.style.display = "none";
+  fractionDiv.style.display = "none";
+  priceSection.style.display = "none";
+  resultSection.style.display = "none";
+
+  // 「％引き」ボタンを押したとき
+  if (percentBtn){
     percentBtn.addEventListener("click", () => {
       percentDiv.style.display = "block";
       fractionDiv.style.display = "none";
       priceSection.style.display = "block";
       resultSection.style.display = "block";
     });
+  }
 
-      // 「割引」ボタンを押したとき
-  fractionBtn.addEventListener("click", () => {
+  // 「割引」ボタンを押したとき
+  if (fractionBtn) {
+    fractionBtn.addEventListener("click", () => {
     percentDiv.style.display = "none";
     fractionDiv.style.display = "block";
     priceSection.style.display = "block";
     resultSection.style.display = "block";
+    });
+  }
+
+  // 割引後の価格を計算して表示する関数
+  function calculateDiscountedPrice() {
+    const price = parseFloat(priceInput.value);
+    const percent = parseFloat(percentInput.value);
+    const fraction = parseFloat(fractionInput.value);
+
+    let discountRate = null;
+
+    if (!isNaN(percent)) {
+      discountRate = percent / 100;
+    } else if (!isNaN(fraction)) {
+      discountRate = fraction * 0.1;
+    }
+
+    if (!isNaN(price) && discountRate !== null) {
+      const discounted = Math.floor(price * (1 - discountRate));
+      result.textContent = discounted;
+    } else {
+      result.textContent = "---";
+    }
+  }
+
+  // 入力のたびに再計算
+  if (priceInput) priceInput.addEventListener("input", calculateDiscountedPrice);
+  if (percentInput) percentInput.addEventListener("input", calculateDiscountedPrice);
+  if (fractionInput) fractionInput.addEventListener("input", calculateDiscountedPrice);
+
+  // ％ボタン用の処理
+  document.querySelectorAll('#discount-percent button').forEach(button => {
+    button.addEventListener("click", () => {
+      const value = parseInt(button.textContent); // "10%" → 10
+      percentInput.value = value;
+      calculateDiscountedPrice();
+    });
   });
+
+  // 割ボタン用の処理
+  document.querySelectorAll('#discount-fraction button').forEach(button => {
+    button.addEventListener("click", () => {
+      const value = parseInt(button.textContent); // "1割" → 1
+      fractionInput.value = value;
+      calculateDiscountedPrice();
+    });
+  });
+
 });
 
-//     // 金額入力と結果表示を表示
-//     document.getElementById("price-section").style.display = "block";
-//     document.getElementById("result-section").style.display = "block";
-//   });
 
-//   fractionBtn.addEventListener("click", function() {
-//     fractionDiv.style.display = "block"; // 〇割引エリアを表示
-//     percentDiv.style.display = "none"; // 〇％引きエリアを非表示
 
-//     // 金額入力と結果表示を表示
-//     document.getElementById("price-section").style.display = "block";
-//     document.getElementById("result-section").style.display = "block";
-//   });
 
-//   // 計算処理
-//   function calculateDiscountedPrice() {
-//     const price = parseFloat(document.getElementById("price-input").value);
-//     const percentInput = parseFloat(document.getElementById("percent-input").value);
-//     const fractionInput = parseFloat(document.getElementById("fraction-input").value);
-
-//     let discountRate = null;
-  
-//     if (!isNaN(percentInput)) {
-//       discountRate = percentInput / 100; // ％ → 割引率
-//     } else if (!isNaN(fractionInput)) {
-//       discountRate = fractionInput * 0.1; // 割 → 割引率
-//     }
-
-//     if (!isNaN(price) && discountRate !== null){ 
-//       const discounted = Math.floor(price * (1 - discountRate));
-//       document.getElementById("discounted-price").textContent = discounted;
-//     } else {
-//       document.getElementById("discounted-price").textContent = "---";
-//     }
-//   }
-
-//   // 入力のたびに計算
-//   document.getElementById("price-input").addEventListener("input", calculateDiscountedPrice);
-//   document.getElementById("percent-input").addEventListener("input", calculateDiscountedPrice);
-//   document.getElementById("fraction-input").addEventListener("input", calculateDiscountedPrice);
-// });
 
