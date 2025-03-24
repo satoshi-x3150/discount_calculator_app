@@ -1,18 +1,38 @@
 window.addEventListener('turbo:load', () => {
-  console.log("OK");
-});
+
 //   // 割引方法の選択ボタンを取得
-//   const percentBtn = document.getElementById("percent-btn");
-//   const fractionBtn = document.getElementById("fraction-btn");
+  const percentBtn = document.getElementById("percent-btn");
+  const fractionBtn = document.getElementById("fraction-btn");
 
 //   // 割引率の選択エリア（％ / 割引）の取得
-//   const percentDiv = document.getElementById("discount-percent");
-//   const fractionDiv = document.getElementById("discount-fraction");
+  const percentDiv = document.getElementById("discount-percent");
+  const fractionDiv = document.getElementById("discount-fraction");
 
-//   // 割引方法のボタンをクリックしたときの処理
-//   percentBtn.addEventListener("click", function() {
-//     percentDiv.style.display = "block"; // 〇％引きエリアを表示
-//     fractionDiv.style.display = "none"; // 〇割引エリアを非表示
+  const priceSection = document.getElementById("price-section");
+  const resultSection = document.getElementById("result-section");
+
+    // 初期状態は全部非表示にしておく
+    percentDiv.style.display = "none";
+    fractionDiv.style.display = "none";
+    priceSection.style.display = "none";
+    resultSection.style.display = "none";
+
+    // 「％引き」ボタンを押したとき
+    percentBtn.addEventListener("click", () => {
+      percentDiv.style.display = "block";
+      fractionDiv.style.display = "none";
+      priceSection.style.display = "block";
+      resultSection.style.display = "block";
+    });
+
+      // 「割引」ボタンを押したとき
+  fractionBtn.addEventListener("click", () => {
+    percentDiv.style.display = "none";
+    fractionDiv.style.display = "block";
+    priceSection.style.display = "block";
+    resultSection.style.display = "block";
+  });
+});
 
 //     // 金額入力と結果表示を表示
 //     document.getElementById("price-section").style.display = "block";
