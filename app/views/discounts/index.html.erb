@@ -45,9 +45,23 @@
   <!-- 割引後の価格表示 -->
   <div id="result-section" class="text-center my-4 hidden">
     <h4>割引後の価格：<span id="discounted-price">---</span> 円</h4>
+  
+    <h5 class="mt-3">税込価格</h5>
+    <ul class="list-unstyled">
+      <li>軽減税率（8%）: <span id="price-tax-8">---</span> 円</li>
+      <li>標準税率（10%）: <span id="price-tax-10">---</span> 円</li>
+    </ul>
+
   </div>
 
   <!-- CSSとJavaScriptを読み込む -->
   <%= stylesheet_link_tag 'discounts', media: 'all' %>
+
+  <hr class="my-4">
+  <div class="container text-muted small">
+    <p>※ 割引率を基に「元の価格 ×（1 - 割引率）」で計算しています。</p>
+    <p>※ 割引後の金額は小数点以下を切り捨てで表示しています。</p>
+    <p>※ 税込み価格は「割引後の価格 × 税率」で算出しています。</p>
+  </div>
 
 

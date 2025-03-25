@@ -16,6 +16,10 @@ window.addEventListener('turbo:load', () => {
   const fractionInput = document.getElementById("fraction-input");
   const result = document.getElementById("discounted-price");
 
+  const tax8 = document.getElementById("price-tax-8");
+  const tax10 = document.getElementById("price-tax-10");
+
+
   // 初期状態は全部非表示にしておく
   percentDiv.style.display = "none";
   fractionDiv.style.display = "none";
@@ -62,6 +66,24 @@ window.addEventListener('turbo:load', () => {
     } else {
       result.textContent = "---";
     }
+
+    if (!isNaN(price) && discountRate !== null) {
+      const discounted = Math.floor(price * (1 - discountRate));
+      result.textContent = discounted;
+    
+      // 軽減税率（8%）
+      const tax8Price = Math.floor(discounted * 1.08);
+      // 標準税率（10%）
+      const tax10Price = Math.floor(discounted * 1.10);
+    
+      tax8.textContent = tax8Price;
+      tax10.textContent = tax10Price;
+    } else {
+      result.textContent = "---";
+      tax8.textContent = "---";
+      tax10.textContent = "---";
+    }
+
   }
 
   // 入力のたびに再計算
