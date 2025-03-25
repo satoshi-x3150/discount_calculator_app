@@ -109,6 +109,30 @@ window.addEventListener('turbo:load', () => {
     });
   });
 
+  const resetBtn = document.getElementById("reset-btn");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      // 入力欄を空にする
+      if (percentInput) percentInput.value = "";
+      if (fractionInput) fractionInput.value = "";
+      if (priceInput) priceInput.value = "";
+
+      // 結果表示を初期状態に戻す
+      if (result) result.textContent = "---";
+      const taxed8 = document.getElementById("price-tax-8");
+      const taxed10 = document.getElementById("price-tax-10");
+      if (taxed8) taxed8.textContent = "---";
+      if (taxed10) taxed10.textContent = "---";
+
+      // エリアを非表示に戻す（必要なら）
+      // if (percentDiv) percentDiv.style.display = "none";
+      // if (fractionDiv) fractionDiv.style.display = "none";
+      // if (priceSection) priceSection.style.display = "none";
+      // if (resultSection) resultSection.style.display = "none";
+      // if (taxSection) taxSection.style.display = "none";
+    });
+  }
+
 });
 
 
