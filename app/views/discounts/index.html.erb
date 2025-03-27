@@ -45,7 +45,7 @@
   <!-- 商品価格の入力 -->
   <div id="price-section" class="text-center my-4 hidden">
     <p>商品の価格を入力してください（円）</p>
-    <input type="number" id="price-input" class="form-control w25 mx-auto" placeholder="例： 398">
+    <input type="number" id="price-input" class="form-control w-25 mx-auto" placeholder="例： 398">
   </div>
 
   <!-- 割引後の価格表示 -->
@@ -59,19 +59,35 @@
     </ul>
   </div>
 
+  <!-- 合計に追加ボタン -->
+  <div class="text-center my-3">
+    <button id="add-btn" class="btn btn-outline-success">合計に追加</button>
+  </div>
+
+  <!-- 合計金額表示エリア（初期は非表示） -->
+  <div id="total-section" class="text-end my-4 hidden pe-5">
+    <h5>合計金額：<span id="total-price"> 0 </span> 円 </h5>
+
+    <ul id="price-list" class="list-unstyled"></ul>
+  </div>
+
   <!-- リセットボタン -->
   <div class="text-center my-4">
-    <button id="reset-btn" class="btn btn-danger">リセット</button>
+    <button id="reset-btn" class="btn btn-danger"> リセット </button>
   </div>
 
   <!-- CSSとJavaScriptを読み込む -->
-  <%= stylesheet_link_tag 'discounts', media: 'all' %>
+  <%# <%= stylesheet_link_tag 'discounts', media: 'all' %>
 
   <hr class="my-4">
-  <div class="container text-muted small">
+  <div class="container d-flex justify-content-center">
+    <div class="text-muted small text-start">
     <p>※ 割引率を基に「元の価格 ×（1 - 割引率）」で計算しています。</p>
     <p>※ 割引後の金額は小数点以下を切り捨てで表示しています。</p>
     <p>※ 税込み価格は「割引後の価格 × 税率」で算出しています。</p>
+    <p class="text-muted mt-2" style="font-size: 0.9rem;">
+    ※ 合計金額には消費税は加算されていません。実際の会計時の金額と異なる場合があります。
+    </p>
   </div>
 
 

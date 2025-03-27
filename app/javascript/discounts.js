@@ -109,30 +109,51 @@ window.addEventListener('turbo:load', () => {
     });
   });
 
+  // 合計金額の管理
+  let total = 0;
+
+  const addBtn = document.getElementById("add-btn");
+  const totalSection = document.getElementById("total-section");
+  const totalAmount = document.getElementById("total-price");
   const resetBtn = document.getElementById("reset-btn");
-  if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
-      // 入力欄を空にする
-      if (percentInput) percentInput.value = "";
-      if (fractionInput) fractionInput.value = "";
-      if (priceInput) priceInput.value = "";
 
-      // 結果表示を初期状態に戻す
-      if (result) result.textContent = "---";
-      const taxed8 = document.getElementById("price-tax-8");
-      const taxed10 = document.getElementById("price-tax-10");
-      if (taxed8) taxed8.textContent = "---";
-      if (taxed10) taxed10.textContent = "---";
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      const discounted = parseInt(document.getElementById("discounted-price").textContent);
+      if (!isNaN(discounted)) {
+        total += discounted;
+        totalAmount.textContent = total;
+        totalSection.style.display = "block";
 
-      // エリアを非表示に戻す（必要なら）
-      // if (percentDiv) percentDiv.style.display = "none";
-      // if (fractionDiv) fractionDiv.style.display = "none";
-      // if (priceSection) priceSection.style.display = "none";
-      // if (resultSection) resultSection.style.display = "none";
-      // if (taxSection) taxSection.style.display = "none";
+        if (percentInput) percentInput.value = "";
+        if (fractionInput) fractionInput.value = "";
+        if (priceInput) priceInput.value = "";
+  
+    // 結果表示を初期状態に戻す
+        if (result) result.textContent = "---";
+        const taxed8 = document.getElementById("price-tax-8");
+        const taxed10 = document.getElementById("price-tax-10");
+        if (taxed8) taxed8.textContent = "---";
+        if (taxed10) taxed10.textContent = "---";
+      }
     });
   }
+  // 入力欄をリセット
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
 
+        // 合計金額リセット
+      total = 0;
+      if (totalAmount) totalAmount.textContent = 0;
+      if (totalSection) totalSection.style.display = "none";
+        // エリアを非表示に戻す（必要なら）
+  if (percentDiv) percentDiv.style.display = "none";
+  if (fractionDiv) fractionDiv.style.display = "none";
+  if (priceSection) priceSection.style.display = "none";
+  if (resultSection) resultSection.style.display = "none";
+  if (taxSection) taxSection.style.display = "none";
+    });
+  }
 });
 
 
